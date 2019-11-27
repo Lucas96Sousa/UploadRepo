@@ -1,5 +1,5 @@
 import React from "react";
-import CircularProgressbar from "react-circular-progressbar";
+import {CircularProgressbar} from "react-circular-progressbar";
 import { MdCheckCircle, MdError, MdLink } from "react-icons/md";
 
 import { Container, FileInfo, Preview } from "./styles";
@@ -26,7 +26,7 @@ const FileList = () => (
           strokeWidth={10}
           percentage={60}
         />
-        /
+        
         <a
           href="https://uploadalface.s3.amazonaws.com/75e132684b0fb72396af14ec28b859a1-pexels-photo-459654.jpeg"
           target="_blank"
@@ -34,6 +34,9 @@ const FileList = () => (
         >
           <MdLink style={{ marginRight: 8 }} size={24} color="#222" />
         </a>
+
+        <MdCheckCircle size={24} color="#78e5d5" />
+        <MdError size={24} color="#e57878" />
       </div>
     </li>
   </Container>
