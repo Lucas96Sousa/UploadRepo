@@ -1,10 +1,10 @@
 import React from "react";
-import {CircularProgressbar} from "react-circular-progressbar";
+import { CircularProgressbar } from "react-circular-progressbar";
 import { MdCheckCircle, MdError, MdLink } from "react-icons/md";
 
 import { Container, FileInfo, Preview } from "./styles";
 
-const FileList = ({ files }) => (
+const FileList = ({ files, onDelete }) => (
   <Container>
     {files.map(uploadedFile => (
       <li key={uploadedFile.id}>
@@ -15,7 +15,7 @@ const FileList = ({ files }) => (
             <span>
               {uploadedFile.readableSize}{" "}
               {!!uploadedFile.url && (
-                <button onClick={() => {}}>
+                <button onClick={() => onDelete(uploadedFile.id)}>
                   Excluir
                 </button>
               )}
@@ -24,17 +24,16 @@ const FileList = ({ files }) => (
         </FileInfo>
 
         <div>
-          {!uploadedFile.uploaded &&
-            !uploadedFile.error && (
-              <CircularProgressbar
-                styles={{
-                  root: { width: 24 },
-                  path: { stroke: "#7159c1" }
-                }}
-                strokeWidth={10}
-                percentage={uploadedFile.progress}
-              />
-            )}
+          {!uploadedFile.uploaded && !uploadedFile.error && (
+            <CircularProgressbar
+              styles={{
+                root: { width: 24 },
+                path: { stroke: "#7159c1" }
+              }}
+              strokeWidth={10}
+              percentage={uploadedFile.progress}
+            />
+          )}
 
           {uploadedFile.url && (
             <a
@@ -54,6 +53,4 @@ const FileList = ({ files }) => (
   </Container>
 );
 
-
 export default FileList;
-/*35:15 timeline video */
