@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const { resolve } = require("path");
+const cors = require("cors");
 
 class App {
   constructor() {
@@ -16,6 +17,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
     this.server.use(morgan("dev"));
